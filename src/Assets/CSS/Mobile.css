@@ -1,0 +1,88 @@
+@import url('./App.css');
+*{
+    box-sizing: border-box;
+}
+.mobile-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #FFFFFF;
+    box-sizing: border-box;
+    width: 320px;
+    padding: 17px;
+    height: 530px;
+    margin: 10px 0px;
+    border-radius: 13px;
+    font-size: 14px;
+}
+form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.avatar{
+    width: 104px;
+    height: 65px;
+}
+.payment-info{
+    font-weight: 600;
+    font-size: 1.4rem;
+}
+.form-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+label{
+    text-align: left;
+    width: 100%;
+    margin: 10px 0px;
+}
+
+.input-container{
+    border: 1px solid #E2E6EE;
+    background: #E2E6EE;
+    border-radius: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 16px;
+    transition: 0.2s;
+}
+.half-input-container{
+    width: 95%;
+    text-align: left;
+    margin-top: 10px;
+}
+.input{
+    background: #E2E6EE;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    padding: 10px 5px;
+    padding-left: 0px;
+    font-size: 14px;
+    transition-duration: 0.2s;
+    color: #030102;
+    width: 100%;
+    color: #9EA8BD;
+
+}
+
+.input:focus, .input-active-true{
+    background: #FFFFFF;
+    box-shadow: 0px 4px 18px rgba(158, 168, 189, 0.31);
+    color: black;
+}
+.input-icon{
+    color: #BCC3D1;
+}
+
+::placeholder{
+    color: #9EA8BD;
+}
