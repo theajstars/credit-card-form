@@ -19,6 +19,108 @@ body{
     font-family: 'Roboto', sans-serif;
     background: #164550;
 }
+
+form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.avatar{
+    width: 104px;
+    height: 65px;
+}
+.payment-info{
+    font-weight: 600;
+    font-size: 1.4rem;
+}
+.form-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+label{
+    text-align: left;
+    width: 100%;
+    margin: 10px 0px;
+}
+
+.input-container{
+    border: 1px solid #E2E6EE;
+    background: #E2E6EE;
+    border-radius: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 16px;
+    transition: 0.2s;
+}
+.half-input-container{
+    width: 95%;
+    text-align: left;
+    margin-top: 10px;
+}
+.input{
+    background: #E2E6EE;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    padding: 10px 5px;
+    padding-left: 0px;
+    font-size: 14px;
+    transition-duration: 0.2s;
+    color: #030102;
+    width: 100%;
+    color: #9EA8BD;
+    font-weight: 500;
+}
+
+.input:focus, .input-active-true{
+    background: #FFFFFF;
+    color: black;
+    border-color: transparent;
+}
+
+.input-active-true:focus{
+    box-shadow: 0px 4px 18px rgba(158, 168, 189, 0.31);
+}
+.input-icon{
+    color: #BCC3D1;
+}
+
+::placeholder{
+    color: #9EA8BD;
+}
+.confirm-payment{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #288FB4;
+    border-radius: 10px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    color: #FFFFFF;
+    border: none;
+    outline: none;
+    padding: 9.5px 10px;
+    box-sizing: border-box;
+    width: 100%;
+    cursor: pointer;
+    transition: 0.12s;
+}
+.confirm-payment:hover{
+    background-color: #1c637d;
+}
+.input-error-true{
+    border: 1px solid rgba(255, 51, 0, 0.9);
+}
+
 .error-icon{
     color: #ff3300;
     font-size: 20px;
@@ -37,6 +139,8 @@ body{
     font-size: 14px;
     position: fixed;
     top: 0px;
+    left: 50%;
+    margin-left: -150px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -46,7 +150,6 @@ body{
 .error-show-true{
     animation-name: error;
     animation-duration: 6s;
-    /* animation-delay: 5s; */
 }
 .error-message{
     font-weight: 500;

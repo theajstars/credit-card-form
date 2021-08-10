@@ -19,11 +19,11 @@
     padding-top: 17px;
     width: 40px;
     border-bottom: 3px solid transparent;
+    outline: none;
 }
 .nav-item:hover{
     color: rgb(0, 115, 230);
     text-shadow: 0px 0px 24px #82CCDD;
-
 }
 .nav-active{
     transition-duration: 0.1s;

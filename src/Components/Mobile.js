@@ -158,10 +158,10 @@ const Mobile = () => {
                             </div>
                         </div>
 
-                        <label htmlFor="card-zip-code">Zip Code</label>
+                        <label htmlFor="card-zip-codex">Zip Code</label>
                         <div className={`input-container input-active-${zipActive} input-error-${zipError}`}>
                             <input type="text"
-                                id="card-zip-code"
+                                id="card-zip-codex"
                                 className={`input input-active${zipActive}`}
                                 onFocus={() => setzipActive(true)}
                                 onBlur={() => setzipActive(false)}

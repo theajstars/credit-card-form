@@ -1,0 +1,27 @@
+.desktop-bg{
+    background: #0A182E;
+    width: 1000px;
+    height: 550px;
+    padding: 2px 150px;
+    border-radius: 13px;
+
+}
+.desktop-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #FFFFFF;
+    box-sizing: border-box;
+    margin: 20px 0px;
+    padding: 20px 40px;
+}
+.desktop-half-input{
+    /* width: 100%; */
+    margin-top: 10px;
+}
+.desktop-half-input:first-child{
+}
+.desktop-half-input:last-child{
+    
+}
