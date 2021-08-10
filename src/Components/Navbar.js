@@ -17,6 +17,8 @@ function Navbar({active}) {
             case 'desktops':
                 document.querySelector('.desktops').classList.add('nav-active');
                 break;
+            default:
+                break;
         }
     }, [activePage])
     return (

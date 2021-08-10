@@ -71,13 +71,17 @@ label{
     color: #030102;
     width: 100%;
     color: #9EA8BD;
-
+    font-weight: 500;
 }
 
 .input:focus, .input-active-true{
     background: #FFFFFF;
-    box-shadow: 0px 4px 18px rgba(158, 168, 189, 0.31);
     color: black;
+    border-color: transparent;
+}
+
+.input-active-true:focus{
+    box-shadow: 0px 4px 18px rgba(158, 168, 189, 0.31);
 }
 .input-icon{
     color: #BCC3D1;
@@ -85,4 +89,30 @@ label{
 
 ::placeholder{
     color: #9EA8BD;
+}
+.confirm-payment{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #288FB4;
+    border-radius: 10px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    color: #FFFFFF;
+    border: none;
+    outline: none;
+    padding: 9.5px 10px;
+    box-sizing: border-box;
+    width: 100%;
+    cursor: pointer;
+    transition: 0.12s;
+}
+.confirm-payment:hover{
+    background-color: #1c637d;
+}
+.input-error-true{
+    border: 1px solid rgba(255, 51, 0, 0.9);
 }

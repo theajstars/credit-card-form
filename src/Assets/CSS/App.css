@@ -1,6 +1,54 @@
 @import url('./fonts.css');
+@keyframes error{
+    10%{
+        transform: translate(0px, 55px);
+    }
+    50%{
+        transform: translate(0px, 55px);
+    }
+    75%{
+        transform: translate(0px, 55px);
+    }
+    100%{
+        transform: translate(0px, -55px);
+        /* top: 20px; */
+    }
+}
 body{
     margin: 0px;
-    font-family: 'Roboto';
+    font-family: 'Roboto', sans-serif;
     background: #164550;
+}
+.error-icon{
+    color: #ff3300;
+    font-size: 20px;
+}
+.error-div{
+    background: #FFFFFF;
+    border: 1px solid rgba(118, 31, 31, 0.38);
+    box-shadow: 0px 0px 12px rgba(151, 75, 75, 0.25);
+    border-radius: 20px;
+    text-align: center;
+    width: 300px;
+    height: 45px;
+    z-index: 999;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    font-size: 14px;
+    position: fixed;
+    top: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* transform: translate(0px, -55px); */
+    top: -55px;
+}
+.error-show-true{
+    animation-name: error;
+    animation-duration: 6s;
+    /* animation-delay: 5s; */
+}
+.error-message{
+    font-weight: 500;
+    margin-left: 5px;
 }
