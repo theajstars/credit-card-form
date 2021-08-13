@@ -14,8 +14,6 @@ function formatExpiryDate(number){
 }
 function cardValidate(name, number, date, cvv, zip){
     number = number.split("-").join("")
-    // number = parseInt(number)
-    console.log(number)
     return new Promise((resolve, reject) => {
         var errors = {
             name: false,

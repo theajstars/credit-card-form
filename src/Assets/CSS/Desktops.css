@@ -1,10 +1,19 @@
+@keyframes animatePayment{
+    0%{
+        width: initial;
+    }
+    100%{
+        /* transform: scale(0.22); */
+    }
+}
 .desktop-bg{
-    background: #0A182E;
     width: 1000px;
     height: 550px;
-    padding: 2px 150px;
     border-radius: 13px;
-
+    margin-top: 10px;
+    display: block;
+    max-height: fit-content;
+    background-color: transparent;
 }
 .desktop-container{
     display: flex;
@@ -13,15 +22,39 @@
     justify-content: space-between;
     background-color: #FFFFFF;
     box-sizing: border-box;
-    margin: 20px 0px;
     padding: 20px 40px;
+    border-radius: 13px;
+    height: 100%;
+    animation-name: animatePayment;
+    animation-duration: 5s;
+    animation-fill-mode: forwards;
 }
 .desktop-half-input{
-    /* width: 100%; */
     margin-top: 10px;
 }
-.desktop-half-input:first-child{
-}
-.desktop-half-input:last-child{
-    
+.need-bigger-screen{
+    position: fixed;
+    width: 350px;
+    top: 50%;
+    margin-top: -25px;
+    left: 50%;
+    margin-left: -175px;
+    height: 50px;
+    z-index: 99999;
+    background: #0F192A;
+    box-shadow: 0px 0px 14px 6px rgba(15, 25, 42, 0.43);
+    border-radius: 10px;
+    font-family: 'Jost', sans-serif !important;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 17.6px;
+    line-height: 23px;
+    box-sizing: border-box;
+    padding: 10px 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: #FFFFFF;
 }

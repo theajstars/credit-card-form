@@ -6,6 +6,7 @@ import { Container } from '@material-ui/core'
 import Avatar from '../Assets/Img/HappyBunchAvatar.svg'
 
 import { formatCardNumber, cardValidate, formatExpiryDate } from './Validations'
+import PaymentComplete from './PaymentComplete'
 function Desktops() {
 
     // Create State variables for input Div focus attribute
@@ -35,6 +36,24 @@ function Desktops() {
     // Create Ref for Form
     const formRef = useRef()
     
+    const [payedStatus, setPayedStatus] = useState(false)
+    const [screenError, setScreenError] = useState('none')
+
+    const [screenWidth, setScreenWidth] = useState(window.screen.availWidth)
+    const [screenDisplay, setScreenDisplay] = useState('block')
+    useEffect(() => {
+        if(screenWidth < 1000){
+            setScreenDisplay('none')
+            setScreenError('flex')
+        }else{
+            setScreenDisplay('block')
+            setScreenError('none')
+        }
+    }, [window.screen.availWidth])
+    window.addEventListener('resize', () => {
+        setScreenWidth(window.screen.availWidth)
+    })
+
     useEffect(() => {
         setCardNumber(formatCardNumber(cardNumber))
     }, [cardNumber])
@@ -42,6 +61,8 @@ function Desktops() {
     useEffect(() => {
         setExpiryDate(formatExpiryDate(expiryDate))
     }, [expiryDate])
+
+
     function submitForm(e){
         e.preventDefault()
         cardValidate(name, cardNumber, expiryDate, cvv, zipCode)
@@ -51,13 +72,16 @@ function Desktops() {
                     setTimeout(() => {
                         setErrorState(false)
                     }, 6000)
+                }else{
+                    setPayedStatus(true)
                 }
-                console.log(res)
+                
                 setNameError(res[0].name)
                 setCardError(res[0].cardNumber)
                 setExpiryDateError(res[0].expiryDate)
                 setCvvError(res[0].cvv)
                 setZipError(res[0].zip)
+                // console.log(`Error count: ${res[1]}`)
             })
             .catch(err => {
                 console.error(err)
@@ -66,10 +90,16 @@ function Desktops() {
 
     return (
         <>
+                <div className="need-bigger-screen" style={{'display': `${screenError}`}}>
+                    <i style={{'color': '#F3A138', marginRight: '10px'}} className="far fa-exclamation-triangle"></i>
+                    <span>
+                        Please switch to a larger screen!
+                    </span>
+                </div>
             <Container maxWidth="lg">
                 <center>
                     <Navbar active="desktops" />
-                    <div className="desktop-bg">
+                    <div className="desktop-bg" style={{display: `${screenDisplay}`}}>
                         <div className="desktop-container">
                             <img src={Avatar} alt="" className="avatar" />
                             <span className="payment-info">
@@ -192,6 +222,7 @@ function Desktops() {
                     </div>
                 </center>
             </Container>
+            <PaymentComplete payed={payedStatus}/>
         </>
     )
 }

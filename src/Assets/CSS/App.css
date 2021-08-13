@@ -1,16 +1,17 @@
 @import url('./fonts.css');
+@import url('./dark-mode.css');
 @keyframes error{
     10%{
-        transform: translate(0px, 55px);
+        transform: translate(0px, 95px);
     }
     50%{
-        transform: translate(0px, 55px);
+        transform: translate(0px, 75px);
     }
     75%{
-        transform: translate(0px, 55px);
+        transform: translate(0px, 95px);
     }
     100%{
-        transform: translate(0px, -55px);
+        transform: translate(0px, -75px);
         /* top: 20px; */
     }
 }
@@ -18,6 +19,7 @@ body{
     margin: 0px;
     font-family: 'Roboto', sans-serif;
     background: #164550;
+    /* filter: invert(100%); */
 }
 
 form{
@@ -79,12 +81,13 @@ label{
 }
 
 .input:focus, .input-active-true{
-    background: #FFFFFF;
-    color: black;
-    border-color: transparent;
+    background: #FFFFFF !important;
+    color: black !important;
+    border-color: transparent !important;
 }
 
-.input-active-true:focus{
+
+.input-active-true{
     box-shadow: 0px 4px 18px rgba(158, 168, 189, 0.31);
 }
 .input-icon{
@@ -131,21 +134,20 @@ label{
     box-shadow: 0px 0px 12px rgba(151, 75, 75, 0.25);
     border-radius: 20px;
     text-align: center;
+    position: fixed;
+    top: -75px;
     width: 300px;
+    left: 50%;
+    margin-left: -150px;
     height: 45px;
     z-index: 999;
     padding: 10px 20px;
     box-sizing: border-box;
     font-size: 14px;
-    position: fixed;
-    top: 0px;
-    left: 50%;
-    margin-left: -150px;
     display: flex;
     align-items: center;
     justify-content: center;
     /* transform: translate(0px, -55px); */
-    top: -55px;
 }
 .error-show-true{
     animation-name: error;

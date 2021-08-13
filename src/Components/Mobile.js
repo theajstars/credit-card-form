@@ -6,6 +6,7 @@ import Navbar from './Navbar'
 import Avatar from '../Assets/Img/HappyBunchAvatar.svg'
 
 import { formatCardNumber, cardValidate, formatExpiryDate } from './Validations'
+import PaymentComplete from './PaymentComplete'
 const Mobile = () => {
 
     // Create State variables for input Div focus attribute
@@ -32,6 +33,8 @@ const Mobile = () => {
     // show Error Dialog if error exists on form submit
     const [errorState, setErrorState] = useState(false)
 
+    const [payedStatus, setPayedStatus] = useState(false)
+
     // Create Ref for Form
     const formRef = useRef()
     
@@ -51,8 +54,9 @@ const Mobile = () => {
                     setTimeout(() => {
                         setErrorState(false)
                     }, 6000)
+                }else{
+                    setPayedStatus(true)
                 }
-                console.log(res)
                 setNameError(res[0].name)
                 setCardError(res[0].cardNumber)
                 setExpiryDateError(res[0].expiryDate)
@@ -65,128 +69,131 @@ const Mobile = () => {
     }
 
     return (
-        <Container maxWidth="md">
-            <Navbar active="mobile" />
-            <center>
-                <div className="mobile-container">
-                    <img src={Avatar} alt="" className="avatar" />
-                    <span className="payment-info">
-                        Payment info
-                    </span>
-                    <form action="#"
-                        autoComplete="off"
-                        ref={formRef}
-                        onSubmit={(e) => submitForm(e)}
-                    >
-                        <label htmlFor="cardholder-name">Full Name</label>
-                        <div 
-                            className={`input-container input-active-${nameActive} input-error-${nameError}`}
+        <>
+            <Container maxWidth="md">
+                <Navbar active="mobile" />
+                <center>
+                    <div className="mobile-container">
+                        <img src={Avatar} alt="" className="avatar" />
+                        <span className="payment-info">
+                            Payment info
+                        </span>
+                        <form action="#"
+                            autoComplete="off"
+                            ref={formRef}
+                            onSubmit={(e) => submitForm(e)}
                         >
-                            <input type="text"
-                                spellCheck="false"
-                                autoComplete="off"
-                                className={`input`}
-                                id="cardholder-name"
-                                onFocus={() => setNameActive(true)}
-                                onBlur={() => setNameActive(false)}
-                                onChange={e => setName(e.target.value)}
-                                
-                            />
-                            <span className="input-icon" >
-                                <i className="fas fa-user"></i>
-                            </span>
-                        </div>
-                        <br />
+                            <label htmlFor="cardholder-name">Full Name</label>
+                            <div 
+                                className={`input-container input-active-${nameActive} input-error-${nameError}`}
+                            >
+                                <input type="text"
+                                    spellCheck="false"
+                                    autoComplete="off"
+                                    className={`input`}
+                                    id="cardholder-name"
+                                    onFocus={() => setNameActive(true)}
+                                    onBlur={() => setNameActive(false)}
+                                    onChange={e => setName(e.target.value)}
+                                    
+                                />
+                                <span className="input-icon" >
+                                    <i className="fas fa-user"></i>
+                                </span>
+                            </div>
+                            <br />
 
-                        
-                        <label htmlFor="card">Credit Card Number</label>
-                        <div 
-                            className={`input-container input-active-${cardNumberActive} input-error-${cardError}`}
-                        >
-                            <input type="text"
-                                spellCheck="false"
-                                id="card"
-                                value={cardNumber}
-                                className={`input input-active${cardNumberActive}`}
-                                onFocus={() => setcardNumberActive(true)}
-                                onBlur={() => setcardNumberActive(false)}
-                                onChange={e => setCardNumber(e.target.value)}
-                            />
-                            <span className="input-icon" >
-                                <i className="fas fa-credit-card-front"></i>
-                            </span>
-                        </div>
-                        <br />
+                            
+                            <label htmlFor="card">Credit Card Number</label>
+                            <div 
+                                className={`input-container input-active-${cardNumberActive} input-error-${cardError}`}
+                            >
+                                <input type="text"
+                                    spellCheck="false"
+                                    id="card"
+                                    value={cardNumber}
+                                    className={`input input-active${cardNumberActive}`}
+                                    onFocus={() => setcardNumberActive(true)}
+                                    onBlur={() => setcardNumberActive(false)}
+                                    onChange={e => setCardNumber(e.target.value)}
+                                />
+                                <span className="input-icon" >
+                                    <i className="fas fa-credit-card-front"></i>
+                                </span>
+                            </div>
+                            <br />
 
-                        <div className="form-row">
-                            <div style={{'textAlign': 'left'}}>
-                                <label htmlFor="expiry">Exp Date</label>
-                                <div className={`input-container half-input-container input-active-${expiryDateActive} input-error-${expiryDateError}`}>
-                                    <input type="text"
-                                        maxLength={5}
-                                        value={expiryDate}
-                                        spellCheck="false"
-                                        id="expiry"
-                                        className={`input input-active${expiryDateActive}`}
-                                        onFocus={() => setExpiryDateActive(true)}
-                                        onBlur={() => setExpiryDateActive(false)}
-                                        onChange={e => setExpiryDate(e.target.value)}
-                                    />
-                                    <span className="input-icon" >
-                                        <i className="fas fa-calendar-day"></i>
-                                    </span>
+                            <div className="form-row">
+                                <div style={{'textAlign': 'left'}}>
+                                    <label htmlFor="expiry">Exp Date</label>
+                                    <div className={`input-container half-input-container input-active-${expiryDateActive} input-error-${expiryDateError}`}>
+                                        <input type="text"
+                                            maxLength={5}
+                                            value={expiryDate}
+                                            spellCheck="false"
+                                            id="expiry"
+                                            className={`input input-active${expiryDateActive}`}
+                                            onFocus={() => setExpiryDateActive(true)}
+                                            onBlur={() => setExpiryDateActive(false)}
+                                            onChange={e => setExpiryDate(e.target.value)}
+                                        />
+                                        <span className="input-icon" >
+                                            <i className="fas fa-calendar-day"></i>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div style={{'textAlign': 'left'}}>
+                                    <label htmlFor="cvv">CVV</label>
+                                    <div className={`input-container half-input-container input-active-${cvvActive} input-error-${cvvError}`}>
+                                        <input type="text"
+                                            maxLength="3"
+                                            spellCheck="false"
+                                            id="cvv"
+                                            value={cvv}
+                                            className={`input input-active${cvvActive}`}
+                                            onFocus={() => setcvvActive(true)}
+                                            onBlur={() => setcvvActive(false)}
+                                            onChange={e => setCvv(e.target.value)}
+                                        />
+                                        <span className="input-icon" >
+                                            <i className="fas fa-key"></i>
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div style={{'textAlign': 'left'}}>
-                                <label htmlFor="cvv">CVV</label>
-                                <div className={`input-container half-input-container input-active-${cvvActive} input-error-${cvvError}`}>
-                                    <input type="text"
-                                        maxLength="3"
-                                        spellCheck="false"
-                                        id="cvv"
-                                        value={cvv}
-                                        className={`input input-active${cvvActive}`}
-                                        onFocus={() => setcvvActive(true)}
-                                        onBlur={() => setcvvActive(false)}
-                                        onChange={e => setCvv(e.target.value)}
-                                    />
-                                    <span className="input-icon" >
-                                        <i className="fas fa-key"></i>
-                                    </span>
-                                </div>
+                            <label htmlFor="card-zip-codex">Zip Code</label>
+                            <div className={`input-container input-active-${zipActive} input-error-${zipError}`}>
+                                <input type="text"
+                                    id="card-zip-codex"
+                                    className={`input input-active${zipActive}`}
+                                    onFocus={() => setzipActive(true)}
+                                    onBlur={() => setzipActive(false)}
+                                    onChange={e => setZipCode(e.target.value)}
+                                />
+                                <span className="input-icon" >
+                                    <i className="fas fa-credit-card-front"></i>
+                                </span>
                             </div>
-                        </div>
-
-                        <label htmlFor="card-zip-codex">Zip Code</label>
-                        <div className={`input-container input-active-${zipActive} input-error-${zipError}`}>
-                            <input type="text"
-                                id="card-zip-codex"
-                                className={`input input-active${zipActive}`}
-                                onFocus={() => setzipActive(true)}
-                                onBlur={() => setzipActive(false)}
-                                onChange={e => setZipCode(e.target.value)}
-                            />
-                            <span className="input-icon" >
-                                <i className="fas fa-credit-card-front"></i>
-                            </span>
-                        </div>
-                        <br />
-                        <button type="submit" className="confirm-payment">
-                            Confirm Payment
-                        </button>
-                        <p className={`error-div error-show-${errorState}`}>
-                            <span className="error-icon">
-                            <i className="far fa-lightbulb-exclamation"></i>
-                            </span>
-                            <span className="error-message">
-                                Please check payment details!
-                            </span>
-                        </p>
-                    </form>
-                </div>
-            </center>
-        </Container>
+                            <br />
+                            <button type="submit" className="confirm-payment">
+                                Confirm Payment
+                            </button>
+                            <p className={`error-div error-show-${errorState}`}>
+                                <span className="error-icon">
+                                <i className="far fa-lightbulb-exclamation"></i>
+                                </span>
+                                <span className="error-message">
+                                    Please check payment details!
+                                </span>
+                            </p>
+                        </form>
+                    </div>
+                </center>
+            </Container>
+            <PaymentComplete payed={payedStatus} />
+        </>
     )
 }
 
