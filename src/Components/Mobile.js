@@ -192,7 +192,7 @@ const Mobile = () => {
                     </div>
                 </center>
             </Container>
-            <PaymentComplete payed={payedStatus} />
+            <PaymentComplete payed={payedStatus} name={name} cardNumber={cardNumber} />
         </>
     )
 }

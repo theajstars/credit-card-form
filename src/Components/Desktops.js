@@ -81,7 +81,6 @@ function Desktops() {
                 setExpiryDateError(res[0].expiryDate)
                 setCvvError(res[0].cvv)
                 setZipError(res[0].zip)
-                // console.log(`Error count: ${res[1]}`)
             })
             .catch(err => {
                 console.error(err)
@@ -222,7 +221,7 @@ function Desktops() {
                     </div>
                 </center>
             </Container>
-            <PaymentComplete payed={payedStatus}/>
+            <PaymentComplete payed={payedStatus} name={name} cardNumber={cardNumber} />
         </>
     )
 }
